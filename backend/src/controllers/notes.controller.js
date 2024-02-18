@@ -15,6 +15,7 @@ const getNotes = (req, res) => {
 const postNote = (req, res) => {
   const description= req.body.description;
   let number = req.body.number || null;
+console.log(description);
   if (!description) {
     return res.status(400).json({ error: 'Falta el campo obligatorio: descripción' });
   }
@@ -24,7 +25,7 @@ const postNote = (req, res) => {
     (err, results) => {
       if (err) {
         console.error(err);
-        return res.status(500).json({ error: 'Error al agregar la nota' });
+        return res.status(500).json({ error: 'Error al agregar la nota', err});
       } else {
         res.json("Nota agregada con éxito");
       }
