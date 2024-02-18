@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.listen(3001, function(){
+app.listen(4002, function(){
     console.log("bien")
 });
 app.use(indexroutes)
