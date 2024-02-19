@@ -1,6 +1,4 @@
-import { faEnvelopeCircleCheck,  } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState, createContext, useContext, ReactNode } from "react";
+import React, { useState, createContext, useContext } from "react";
 import PropTypes from "prop-types";
 
 const initialState = {
@@ -15,8 +13,15 @@ export const ModalConsumer = () => {
   return (
     <ModalContext.Consumer>
       {({ isModalOpen, modalContent, setModalOpen, modalWidth }) => (
-        <div className={`fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center ${isModalOpen ? '' : 'hidden'}`}>
-          <div className="bg-white rounded-lg p-4" style={{ width: modalWidth }}>
+        <div
+          className={`fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center ${
+            isModalOpen ? "" : "hidden"
+          }`}
+        >
+          <div
+            className="bg-white rounded-lg p-4"
+            style={{ width: modalWidth }}
+          >
             {modalContent}
           </div>
         </div>
@@ -28,11 +33,7 @@ export const ModalConsumer = () => {
 export const ModalProvider = ({ children }) => {
   const [state, setState] = useState(initialState);
 
-  const setModalOpen = (
-    isModalOpen,
-    modalContent,
-    modalWidth = 400
-  ) => {
+  const setModalOpen = (isModalOpen, modalContent, modalWidth = 400) => {
     setState({ isModalOpen, modalContent, modalWidth });
   };
 
