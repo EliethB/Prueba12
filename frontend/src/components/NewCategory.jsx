@@ -5,7 +5,7 @@ import { useAlert } from "./AlertContext";
 import { ButtonComponent } from "./ButtonComponent";
 import { noteApi } from "../api/noteApi";
 
-const NewCategory = ({ onCloseNewNotes }) => {
+const NewCategory = ({ onCloseNewNotes, setEditMode}) => {
   const [nameCategory, setnameCategory] = useState("");
   const { setModalOpen } = useModal();
   const { showAlert } = useAlert();
@@ -13,9 +13,11 @@ const NewCategory = ({ onCloseNewNotes }) => {
 
   const onClose = () => {
     setModalOpen(false, "");
+
   };
 
   const handleAdd = () => {
+   
     setModalOpen(
       true,
       <ModalConfirmation
@@ -73,13 +75,13 @@ const NewCategory = ({ onCloseNewNotes }) => {
                     text={"Cancel"}
                     onFuction={handleCancel}
                     colorOutline={"#d4473d"}
-                    bgColor={"#e45454"}
+                    bgColor={"blue-500"}
                   />
                   <ButtonComponent
                     text={"Accept"}
                     onFuction={handleAdd}
                     colorOutline={"#2c881a"}
-                    bgColor={"#42df7e"}
+                    bgColor={"red-500"}
                   />
                 </div>
               </div>

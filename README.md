@@ -1,7 +1,8 @@
 ## Introduction
-This is a simple web application designed for note-taking, tagging, and filtering. The primary focus is on note creation.
+This simple web application allows users to create notes, tag them, and filter them. The development is divided into two main phases:
 
-Note: Completion of Phase 1 is required to pass this exercise.
+Phase 1: Creating notes.
+Phase 2: Applying labels and filtering.
 
 ## Requirements
 npm: v9.6.7
@@ -33,12 +34,32 @@ start_server(): Starts the Node.js server located at EnsolversBackend/backend/in
 start_react_app(): Starts the React application located at EnsolversBackend/frontend using npm start.
 The main() function orchestrates the execution of all the tasks in the correct order.
 Finally, the script calls the main function to start the setup and execution process.
+
+## Note
+In the run__app.sh file, you need to change it to the name of your database
+configure_database() {
+  echo "Configuring the MySQL database..."
+  mysql -u abstract-programmer (change it to your database name) -p < database.sql
+}
 ## database.sql
 ## CREATE DATABASE IF NOT EXISTS ensolvers_data;
 This command creates a database named ensolvers_data if it doesn't already exist. The IF NOT EXISTS clause ensures that the database is created only if it doesn't already exist.
 
 ## USE ensolvers_data;
 This command selects the ensolvers_data database for use. Subsequent SQL commands will be executed in the context of this database.
+
+## CREATE TABLE IF NOT EXISTS categories (
+##    id INT AUTO_INCREMENT PRIMARY KEY,
+##    nameCategory VARCHAR(100) NOT NULL
+## );
+
+This SQL statement creates a table named "categories" if it does not already exist. The table has two columns:
+
+"id": An auto-incrementing integer field that serves as the primary key.
+   
+"nameCategory": A VARCHAR field of up to 100 characters, used to store category names.
+
+In short, you set up a table to store category names along with unique identifiers.
 
 ## CREATE TABLE IF NOT EXISTS state (
 ##    id INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,11 +70,13 @@ id: An auto-incrementing integer column that serves as the primary key.
 status: A variable-length string column with a maximum length of 100 characters. This column stores the status of notes.
 
 ## CREATE TABLE IF NOT EXISTS notes (
-##  id INT AUTO_INCREMENT PRIMARY KEY,
+##    id INT AUTO_INCREMENT PRIMARY KEY,
 ##    description VARCHAR(1000) NOT NULL,
 ##    number INT, 
 ##    id_state INT NOT NULL,
-##    FOREIGN KEY (id_state) REFERENCES state(id)
+##    id_category INT,
+##    FOREIGN KEY (id_state) REFERENCES state(id),
+##	  FOREIGN KEY (id_category) REFERENCES categories(id)
 ## );
 This command creates a table named notes if it doesn't already exist. It defines four columns:
 id: An auto-incrementing integer column that serves as the primary key.

@@ -51,13 +51,14 @@ const View = () => {
         </div>
         {showNewNotes && <NewNotes onCloseNewNotes={handleCloseNewNotes} />}
         {showNewCategory && (
-          <NewCategory onCloseNewNotes={handleCloseNewNotes} />
+          <NewCategory onCloseNewNotes={handleCloseNewNotes} setEditMode={setEditMode}/>
         )}
         <div className="flex sm:flex-col ">
           <TableActivo
             updateNotes={updateNotes}
             showNotes={setShowNewNotes}
             setEditMode={setEditMode}
+            setShowNewCategory={setShowNewCategory}
             editMode={editMode}
           />
         </div>

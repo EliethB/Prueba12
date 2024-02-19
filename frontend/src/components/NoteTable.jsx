@@ -35,6 +35,7 @@ const NoteTable = ({
         current_number: currentNumber,
         new_number: newNumber,
       });
+      updateChange();
     } catch (error) {}
   };
 

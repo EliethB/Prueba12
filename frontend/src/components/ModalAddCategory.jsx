@@ -61,13 +61,13 @@ export const ModalAddCategory = ({ onClose, noteID, updateChange }) => {
           text={"Cancel"}
           onFuction={onClose}
           colorOutline={"#d4473d"}
-          bgColor={"#e45454"}
+          bgColor={"blue-500"}
         />
         <ButtonComponent
           text={"Accept"}
           onFuction={handleAccept}
           colorOutline={"#2c881a"}
-          bgColor={"#42df7e"}
+          bgColor={"red-500"}
         />
       </div>
     </div>

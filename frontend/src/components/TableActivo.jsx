@@ -7,7 +7,7 @@ import { useAlert } from "./AlertContext";
 import { Search } from "./Search";
 import { noteApi } from "../api/noteApi";
 
-function TableActivo({ updateNotes, showNotes, setEditMode, editMode }) {
+function TableActivo({ updateNotes, showNotes, setEditMode, editMode, setShowNewCategory }) {
   const [listNotes, setListNotes] = useState([]);
   const { showAlert } = useAlert();
   const [selectedNote, setSelectedNote] = useState(null);
@@ -45,6 +45,7 @@ function TableActivo({ updateNotes, showNotes, setEditMode, editMode }) {
     setEditMode(true);
     setSelectedNote(note);
     showNotes(false);
+    setShowNewCategory(false);
   };
 
   const closeEditNote = () => {
@@ -78,7 +79,6 @@ function TableActivo({ updateNotes, showNotes, setEditMode, editMode }) {
       {editMode && (
         <EditNote
           note={selectedNote}
-          id={selectedNote.id}
           onCloseUpdate={closeEditNote}
           updateChange={getNotes}
         />
